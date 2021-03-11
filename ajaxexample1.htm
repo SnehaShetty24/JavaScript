@@ -1,0 +1,47 @@
+<script src="jquery-3.6.0.min.js"></script>
+<h2>Users List</h2>
+Enter Page No:<input id="txtpage"/>
+<input id="btnget" type="button" value="Get Users Data"/>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+    </thead>
+    <tbody id="tabrows">
+
+    </tbody>
+</table>
+<script>
+    $("#btnget").click(function(){
+        var svcurl="https://reqres.in/api/users";
+        var pgno=$("#txtpage").val();
+        var tabrow=$("#tabrows");
+        $.ajax(
+            {
+                url:svcurl+ "?page=" +pgno,
+                dataType:"json",
+                type:"Get",
+                success:function(respdata){
+                    console.log(respdata);
+                    var userdata=respdata.data;
+                    var msg="";
+                    userdata.forEach(usr=>{
+                        msg+="<tr>";
+                        msg+='<td>'+usr.id;
+                        msg+='<td>'+usr.email;
+                        msg+='<td>'+usr.first_name;
+                        msg+='<td>'+usr.last_name;
+                    });
+                    tabrow.html(msg);
+                },
+                error:function(err){
+                    
+                }
+            }
+        );
+    });
+</script>

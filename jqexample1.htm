@@ -1,0 +1,43 @@
+<script src="jquery-3.6.0.min.js"></script>
+<ul>
+    <li>Mumbai</li>
+    <li>Pune</li>
+    <li>Karnataka</li>
+</ul>
+<hr/>
+<ol>
+    <li>Mumbai</li>
+    <li>Pune</li>
+    <li>Karnataka</li>
+</ol>
+<input type="button" value="Click me" id="btn1"/>
+<input type="button" value="Click me" id="btn2"/>
+<input type="button" value="Click me" id="btn3"/>
+<hr/>
+<img src="IMG_0379.JPG" height="200" width="200"/>
+<input type="button" value="Hide/Show me" id="btn4"/>
+<script>
+    function f1(){
+        alert("I am Jquery");
+        $(this).val("I am clicked");
+    }
+    $("#btn1").click(f1);
+    $("#btn2").click(f1);
+    $("input[type='button']").mouseover(
+        function(){
+            $(this).css('fontWeight','bold');
+        }
+    );
+    $("input[type='button']").mouseout(
+        function(){
+            $(this).css('fontWeight','normal');
+        }
+    );
+    $("ul>li").css({color:'blue',fontWeight:'bold'});
+    $("li").click(function(){
+        $(this).remove();
+    });
+    $("#btn4").click(function(){
+        $("img").fadeToggle(5000);
+    });
+</script>

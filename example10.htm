@@ -1,0 +1,22 @@
+<script>
+    function PersonClosure(){
+        var cnt=0;
+        var Per=function(nm,cno){
+            this.name=nm;
+            this.cellno=cno;
+            cnt++;
+        }
+        Per.prototype.show=function(){
+            console.log("You can call ",this.name," on ",this.cellno);
+        }
+        Per.prototype.getcount=function(){
+            return cnt;
+        }
+        return Per;
+    }
+    Person=PersonClosure();
+    var p1=new Person("Sneha",1121);
+    var p2=new Person("Akshith",9060304094);
+    p1.show();p2.show();
+    console.log(p1.getcount(),p2.getcount());
+</script>

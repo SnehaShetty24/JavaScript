@@ -1,0 +1,90 @@
+<h2>Example2</h2>
+<table>
+    <tr>
+        <td>Start No</td>
+        <td><input id='tstart'/></td>
+    </tr>
+    <tr>
+        <td>End No</td>
+        <td><input id='tend'/></td>
+    </tr>
+<tr>
+    <td>Do what?</td>
+    <td>
+        <select id="dnoper">
+            <option>Sum All</option>
+            <option>Sum All Odds</option>
+            <option>Sum All Primes</option>
+            <option>Print All Primes</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td colspan="2"><input type="button" value="Do" onclick="dooper()"/></td>
+</tr>
+</table>
+<div id='dv'></div>
+<script>
+    function dooper(){
+        var ts=document.getElementById('tstart');
+        var te=document.getElementById('tend');
+        var tsel=document.getElementById('dnoper');
+        var sno=parseInt(ts.value),eno=parseInt(te.value),sel=tsel.selectedIndex;
+        var res;
+        if(sel==0)
+            res=SumAll(sno,eno);
+        else if(sel==1)
+            res=SumAllOdds(sno,eno);
+        else if(sel==2)
+            res=SumAllPrimes(sno,eno);
+        else if(sel==3)
+            res=PrintAllPrimes(sno,eno);
+        var dvr=document.getElementById('dv');
+        dvr.innerHTML="Result ="+res;
+    }
+    function SumAll(sn,en){
+        var tot=0;
+        while(sn<=en){
+            tot+=sn;
+            sn++;
+        }
+        return tot;
+    }
+    function SumAllOdds(sn,en){
+        var tot=0;
+        while(sn<=en){
+            if(sn%2==1)
+                tot+=sn;
+            sn++;
+        }
+        return tot;
+    }
+    function IsPrime(no){
+        var index;
+        for(index=2;index<=no/2;index++){
+            if(no%index==0)
+                return false;
+        }
+        return true;
+    }
+    function SumAllPrimes(sno,eno){
+        var tot=0;
+        while(sno<=eno){
+            if(IsPrime(sno)){
+                tot+=sno;
+            }
+            sno++;
+        }
+        return tot;
+    }
+    function PrintAllPrimes(sno,eno){
+        var primes=[];
+        while(sno<=eno){
+            if(IsPrime(sno)){
+                primes.push(sno);
+            }
+            sno++;
+        }
+        return primes.join(',');
+    }
+</script>

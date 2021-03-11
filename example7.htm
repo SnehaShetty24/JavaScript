@@ -1,0 +1,25 @@
+<h2>Prototyping</h2>
+Number1:<input id="no1"/><br/>
+Number2:<input id="no2"/><br/>
+Result:<span id="res"></span>
+<input id="btn1" type="button" value="Add"/>
+<script>
+    function Calc(t1,t2,b,op,res){
+        this.t1=document.getElementById(t1);
+        this.t2=document.getElementById(t2);
+        this.btn=document.getElementById(b);
+        this.res=document.getElementById(res);
+        this.oper=op;
+        this.btn=addEventListener("click",this.handleClick.bind(this));
+    }
+    Calc.prototype.handleClick=function(){
+        console.log('Click handled ',this);
+        if(this.oper=='+'){
+            this.res.innerHTML=parseFloat(this.t1.value)+parseFloat(this.t2.value);
+        }
+        else if(this.oper=='-'){
+            this.res.innerHTML=parseFloat(this.t1.value)-parseFloat(this.t2.value);
+        }
+    };
+    var c=new Calc('no1','no2','btn1','-','res');
+</script>

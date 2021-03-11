@@ -1,0 +1,25 @@
+<script>
+    PersonFactory=(function()
+    {
+        var p;
+        var Per=function(nm,cno){
+            console.log("Person instance created");
+            this.name=nm;
+            this.cellno=cno;
+        }
+        Per.prototype.show=function(){
+            console.log("You can call ",this.name," on ",this.cellno);
+        }
+        return{
+            GetPerson:function(){
+                if(p==undefined){
+                    p=new Per("Bill Gates",1243);
+                }
+                return p;
+            }
+        };
+    })();
+    var p1=PersonFactory.GetPerson();
+    var p2=PersonFactory.GetPerson();
+    p1.show();p2.show();
+</script>

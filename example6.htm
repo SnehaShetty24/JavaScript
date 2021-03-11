@@ -1,0 +1,16 @@
+<script>
+    function Account(acno,opbal){
+        this.accno=acno;
+        this.bal=opbal;
+    }
+    Account.prototype.Deposit=function(amt){
+        this.bal+=amt;
+    }
+    Account.prototype.Withdraw=function(amt){
+        this.bal-=amt;
+    }
+    var a1=new Account(1,1000);
+    a1.Deposit(2000);a1.Deposit(3000);
+    a1.Withdraw(3000);
+    console.log(a1.bal);
+</script>

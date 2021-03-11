@@ -1,0 +1,13 @@
+<script>
+    function Person(ct){
+        this.city=ct;
+    }
+    Person.prototype.show=function(){
+        console.log(this);
+        alert("I stay in "+this.city);
+    }
+    var p=new Person("Sneha");
+    p.show();
+    var storepadd=p.show.bind(p);
+    storepadd();
+</script>

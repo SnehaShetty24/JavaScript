@@ -1,0 +1,31 @@
+
+<script>
+    function getname(){
+        return "Sneha";
+    }
+    function takefn(fn){
+        console.log("welcome ",fn());
+    }
+    takefn(getname);
+    takefn(()=>{return "Bill Gates";});
+    function SumOdds(arr){
+        var tot=0;
+        for(n of arr){
+            if(n%2==1)
+                tot+=n;
+        }
+        return tot;
+    }
+    function SumIf(arr,fn){
+        var tot=0;
+        for(n of arr){
+            if(fn(n))
+                tot+=n;
+        }
+        return tot;
+    }
+    console.log(SumOdds([5,4,7,24,26,12,13]));
+    console.log(SumIf([5,4,7,24,26,12,13],(n)=>n%2==1));
+    console.log(SumIf([5,4,7,24,26,12,13],(n)=>n%2==0));
+    console.log(SumIf([5,4,7,24,26,12,13],(n)=>n>=15));
+</script>

@@ -1,0 +1,35 @@
+<h2>First JS Code</h2>
+<hr/>
+New Cities: <input id="txtcity"/>
+<input type="button" value="Add" onclick="addCity()"/>
+<hr/>
+<div id="div1"></div>
+<div id="div2"></div>
+<input type="button" value="Cities" onclick="display()">
+<script>
+var gvar="Hello World";
+gvar=100;
+var citiesarray=['mumbai','pune','nashik','bangalore','delhi'];
+var d=document.getElementById('div1');
+d.innerHTML=gvar;
+
+//The function takes in array and HTML element ID as argument
+function showCities(cityList,dv){
+var dv=document.getElementById(dv);
+var str='<ul>';
+for(index=0;index<cityList.length;index++){
+str+='<li>'+cityList[index]+"</li>";
+}
+str+='</ul>';
+dv.innerHTML=str;
+}
+function display(){
+showCities(citiesarray,'div2');
+}
+function addCity(){
+var txt=document.getElementById("txtcity");
+citiesarray.push(txt.value);
+alert("City added to the buffer");
+//txt.value="; txt.focus();
+}
+</script>
